@@ -7,7 +7,41 @@
     <link rel="stylesheet" href="./assets/css/style(2).css" />
     <title>Code Quiz</title>
   </head>
+
   <body>
+    <div class="score"><a href="./high-score.html">View Highscores</a></div>
+
+    <div class="time">Time: <span id="time">0</span></div>
+
+    <div class="main-title">
+      <div id="starting-page">
+        <h1 id="quiz-title">Coding Quiz Challenge</h1>
+        <p id="instructional-info">
+          Try to answer the following code-related questions within the time
+          limit. Keep in mind that incorrect answers will penalize your
+          score/time by ten seconds!
+        </p>
+        <button class="start-button" id="start-btn">Start Quiz!</button>
+      </div>
+
+      <div class="hide" id="question"></div>
+
+      <div id="ending-page" class="hide">
+        <h2>All done!</h2>
+        <p>Your final score is <span id="final-score"></span>.</p>
+        <p>
+          Enter initials: <input type="text" class="initials" max="3" />
+          <button id="submit">Submit</button>
+        </p>
+      </div>
+      
+      <div id="highscore-page" class="hide">
+        <h2>High Scores</h2>
+          <button id="go-back">Go Back</button>
+        </p>
+      </div>
+    </div>
+
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
