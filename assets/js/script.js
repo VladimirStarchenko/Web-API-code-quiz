@@ -9,6 +9,7 @@ const submitButton = document.getElementById("submit");
 const viewScore = document.querySelector(".score");
 const listofHighScores = document.getElementById("list-of-scores");
 
+// my loop of Questions, Options and Answers
 let questions = [
   {
     Question: "Commonly used data types DO Not include:",
@@ -68,7 +69,7 @@ function questionsListed() {
   questionsPage.appendChild(firstQuestion);
 
   let orderedListOfOptions = document.createElement("ol");
-
+  // this will create a 4 <li> elements for each option
   for (let i = 0; i < 4; i++) {
     let listOfOptions = document.createElement("li");
     listOfOptions.classList.add("btn");
@@ -79,6 +80,9 @@ function questionsListed() {
   }
   questionsPage.appendChild(orderedListOfOptions);
 
+  //here I am creating conditions based on if the user chooses the right answer
+  // if the user does choose correctly they get the message of correct
+  // if the user doesn't choose correctly they get the message of incorrect
   var btn = document.querySelectorAll(".btn");
   for (let i = 0; i < btn.length; i++) {
     btn[i].addEventListener("click", function () {
@@ -94,6 +98,8 @@ function questionsListed() {
       questionsPage.appendChild(Message);
       Index++;
 
+      //if/else statement should time run out or the user finish's the quiz
+      // the end page will appear with the initials submit button
       if (Index < questions.length) {
         setTimeout(questionsListed, 1000);
       } else {
@@ -115,6 +121,7 @@ function countdown() {
 
 var scoreList = [];
 
+// used to store my initials
 var submitQuizHandler = function (event) {
   event.preventDefault();
 
@@ -128,12 +135,13 @@ var submitQuizHandler = function (event) {
 
   saveScores();
 };
-
+// used to store my score of TimeRemaining acting as the score
 var saveScores = function () {
   console.log("saving scores");
   localStorage.setItem("scores", JSON.stringify(scoreList));
 };
 
+// this will load my score in the localStorage to be used and accessed later
 var loadScores = function () {
   var loadedScores = localStorage.getItem("scores");
   if (!loadedScores) {
@@ -141,6 +149,6 @@ var loadScores = function () {
   }
   scoreList = JSON.parse(loadedScores);
 };
-
+//event listener to store the initials
 submitButton.addEventListener("click", submitQuizHandler);
 loadScores();
